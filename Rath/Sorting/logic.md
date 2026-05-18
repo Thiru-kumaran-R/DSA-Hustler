@@ -1,2 +1,2 @@
-## question1
- the logic of this question bascially like that we have to write
+## SELECTION SORT
+What basically i did in selection sort is that we have to comapre the elements and whatever the element is min we have to switch both of the element for this first i made two functions with name SWITCH AND MIN first thing which i did in my mian function is that iterate the loop on all the elements and then i am callin ght min function then after finding the min i'm siwthcing this number to the other like that after the whole process the array become sorted
