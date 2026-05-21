@@ -204,3 +204,70 @@ class Solution:
 
 
 // Optimal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// *************************************************************************************************************************
+
+//FIND MISSING NUMBER
+class Solution:
+    def missingNumber(self, nums):
+        n=len(nums)
+        totalSum=n*(n+1)//2;
+        summ=0
+
+        for val in nums:
+            summ+=val
+
+        
+        return totalSum-summ
+
+
+        // ?***************************************************************************************************************************
+// 485 MAXIMUM CONSECUTIVE ONES->https://leetcode.com/problems/max-consecutive-ones/description/
+
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        MaxCount=0
+        count=0
+
+        for i in nums:
+            if i==1:
+                count+=1
+            else:
+                 
+                MaxCount=max(MaxCount,count)
+                count=0
+
+        return max(MaxCount,count)
+
