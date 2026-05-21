@@ -183,3 +183,24 @@ class Solution {
         }
     }
 }
+
+
+//****************************************************************************************** */
+
+// UNION OF TWO SORTED ARRAY
+
+// Brute Force
+class Solution:
+    def unionArray(self, nums1, nums2):
+        s=set();
+
+        for val in nums1:
+            s.add(val);
+
+        for val in nums2:
+            s.add(val);
+
+        return list(s);
+
+
+// Optimal
