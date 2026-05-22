@@ -17,3 +17,29 @@ In this question I applied the logic of finding the max element by using the sam
 In this question first I made a variable name cnt and assign it an integer value 0 because whats the logic I made behind this question is I will check the breaking order of Asceding elements means that if the ascending order is breaked 2 times in the array then it is not sorted because for the first time it will find the smaller element then again it found the smaller element which is not following the srting order and for the same element the value cnt will be 0 and the 3 condition at last I'm also ckecking that the last value of array will be smaller than the first element if not then increase the count and it will not increase the count in one condition where the array is alredy sorted 
 and at last i m cheking if the count is less than or equal to 1 then return true;
 
+
+<!-- ********************************************************** -->
+
+<!--Remove duplicate from sorted array  -->
+
+In this question I used the logic of 2 pointers means that the array is already sorted so what i did is basically I kept the 1 pointer on 0 index and 2 pointer on 1 index and increasing the index 2 everytime and cheking everytime that the value of nums[i]!=nums[j] means the previous valu eis not equal to the current value at that time I store this value to the next of previous value and moving the the 1 pointer to the 2 pointer means now the 1 pointer is pointing the new value which stored rn in the array.
+
+
+
+!-- ********************************************************** -->
+
+<!--ROTATE ARRAY by K places -->
+
+Actually that's pritty good question what i did is basically first i divide the k by length of the array and keep the remianders means if the value of k is greater than the length so it's takes the value which is lessar than length so the repition of rotating the array we can avoid then I make the reverse array
+1- At first i reverse the whole array
+2- I reverse the array until kth value but inside the array it will be k-1
+3- then i reversed the from k until the length of the array 
+By doing this, array become rotated by k places 
+
+
+!-- ********************************************************** -->
+
+<!--MOVE ZERO AT THE END OF ARRAY -->
+ 
+ This question literally feak me out such a silly question but i want to solve this question in my own style means without swaping the values just directly assigning the ith value to 0
+ Okk So What i did in this question is again I used the 2 pointer concpet same as above then while iterating the loop first i cheked that if the first element is not equal to 0 then increase the value of j from 0 to 1 then I just cheked that if the value is not equal to 0 then simply swap the value of i and j and after swapping just increase the secong pointer becuase j pointing the non zero value and at that index only I am storing the non zero so after swithing the value with j inex I have to increase it so the next non zero value stored on the next index.

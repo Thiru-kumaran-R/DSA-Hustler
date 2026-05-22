@@ -80,7 +80,7 @@ class Solution {
              
             nums[count++]=nums[i];
             j=i;
-            
+
         }
        }
     return count;
@@ -156,6 +156,7 @@ public static void reverse(int []arr,int start,int end){
 
 //******************************************************************************* */
 
+// MOVE ZERO AT THE END OF ARRAY
 class Solution {
     public void moveZeroes(int[] nums) {
         
@@ -271,3 +272,89 @@ class Solution:
 
         return max(MaxCount,count)
 
+
+
+// ****************************************************************************************************
+
+//136: SINGLE NUMBER->https://leetcode.com/problems/single-number/
+
+// Brute Force
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        if len(nums)==1:
+            return nums[0]
+
+        s = set()
+        summ=0
+        totalSum=0
+
+        for val in nums:
+            summ+=val
+            s.add(val)
+
+        for val in s:
+             totalSum+=val
+
+        
+        return (totalSum*2)-summ
+
+//OPTIMIZE
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+
+
+        res=0
+        for val in nums:
+            res^=val
+
+        
+        return res
+     
+
+//*************************************************************************************************** */
+
+//LONGEST SUBARRAY WITH SUM K
+//BRUTE FORCE
+class Solution:
+    def longestSubarray(self, nums, k):
+         nums.sort()
+         summ=0
+         i=0
+
+         while i<len(nums) and summ<k:
+            summ+=nums[i]
+            i+=1
+            
+         if summ!=k:
+            return 0
+
+         return i
+
+//OPTIMAL
+class Solution {
+    public int longestSubarray(int[] nums, int k) {
+        int sum = 0;
+        int j = 0;
+        int max = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            while (sum > k) {   // ✅ j slowly hatao
+                sum -= nums[j];
+                j++;
+            }
+
+            if (sum == k) {
+                max = Math.max(max, i - j + 1);
+            }
+        }
+
+        return max;
+    }
+}
+
+
+//HANDLING NEGATIVE NUMBERS ALSO
