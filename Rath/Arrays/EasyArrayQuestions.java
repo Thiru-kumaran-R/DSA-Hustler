@@ -358,3 +358,28 @@ class Solution {
 
 
 //HANDLING NEGATIVE NUMBERS ALSO
+class Solution:
+    def longestSubarray(self, nums: list[int], k: int) -> int:
+        hm = {}
+        hm[0] = -1
+        summ = 0
+        lent = 0
+
+        for i in range(len(nums)):
+            summ += nums[i]
+            rem = summ - k
+            
+            if rem in hm:
+                lent = max(lent, i - hm[rem])
+
+            if summ not in hm:
+                hm[summ] = i
+
+        return lent  
+
+
+
+
+
+
+
