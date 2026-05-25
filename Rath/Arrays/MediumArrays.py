@@ -140,3 +140,120 @@ class Solution {
         return -1;
     }
 }
+
+
+# *******************************************************************************************
+# 53 Maximum Subarray->https://leetcode.com/problems/maximum-subarray/description/
+
+# Brute and Better O(n^2)
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        
+        maxx=float('-inf')
+        for i in range(len(nums)):
+            sum=0
+            for j in range(i,len(nums)):
+                sum+=nums[j]
+                maxx=max(sum,maxx)
+            
+             
+
+        return maxx
+
+# KADANE'S ALGORITHM O(n)
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        
+        maxx=float('-inf')
+        summ=0
+        for val in nums:
+            summ+=val
+
+            maxx=max(summ,maxx)
+
+            if summ<0:
+                summ=0
+
+        return maxx
+        
+
+# 121 BUY AND SELL STOCKS->https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
+class Solution:
+    def maxProfit(self, nums: List[int]) -> int:
+        
+        maxProfit=0
+        buy=nums[0]
+
+        for i in range(1,len(nums)):
+            if buy < nums[i]:
+                maxProfit=max(maxProfit,nums[i]-buy)
+
+            else:
+                buy=nums[i]
+
+
+        return maxProfit
+
+
+
+# ****************************************************************************************************
+# 2149 Reaarange array element by sign->https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
+# BRUTE FORCE
+
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+
+        arr1=[0]*(len(nums)//2)
+        arr2=[0]*(len(arr1))
+        k=0
+        l=0
+
+        for i in range(len(nums)):
+            if nums[i]>=0:
+                arr1[k]=nums[i]
+                k+=1
+
+            else:
+                arr2[l]=nums[i]
+                l+=1
+
+        li=[]
+        k=0
+        l=0
+
+        for i in range(len(nums)):
+            if i%2==0:
+                li.append(arr1[k])
+                k+=1
+            else:
+                li.append(arr2[l])
+                l+=1
+        return li
+
+
+# OPTIMAL APPROACH
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+
+        li=[]
+        posIndex=0
+        negIndex=1 
+
+        for i in range(len(nums)):
+            if nums[i]>=0:
+                 li.insert(posIndex,nums[i])
+                 posIndex+=2
+
+            else:
+                li.insert(negIndex,nums[i])
+                negIndex+=2
+                 
+
+        
+        return li
+        
+        
+
