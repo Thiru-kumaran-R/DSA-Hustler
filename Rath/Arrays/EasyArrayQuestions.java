@@ -262,8 +262,8 @@ class Solution:
         MaxCount=0
         count=0
 
-        for i in nums:
-            if i==1:
+        for val in nums:
+            if val==1:
                 count+=1
             else:
                  

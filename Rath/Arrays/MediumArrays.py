@@ -254,6 +254,46 @@ class Solution:
 
         
         return li
-        
+# IF THE NEGATIVE VALUE AND POSITIVE VALUES ARE NOT EQUAL
+# BUT TAKING THE BEST CASE COMPLEXITY O(3N/2) AND O(2N) FOR THE WORST CASE
+
+from typing import List
+
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        pos = []
+        neg = []
+
+        for val in nums:
+            if val >= 0:
+                pos.append(val)  
+            else:
+                neg.append(val)  
+
+        if len(pos) > len(neg):
+            for i in range(len(neg)):
+                nums[i * 2] = pos[i]
+                nums[i * 2 + 1] = neg[i]
+            
+            j = len(neg) * 2
+            pos_ptr = len(neg)   
+            for i in range(j, len(nums)):
+                nums[i] = pos[pos_ptr]
+                pos_ptr += 1
+
+        else:
+            for i in range(len(pos)):
+                nums[i * 2] = pos[i]
+                nums[i * 2 + 1] = neg[i]
+            
+            j = len(pos) * 2
+            neg_ptr = len(pos)   
+            for i in range(j, len(nums)):
+                nums[i] = neg[neg_ptr]
+                neg_ptr += 1
+
+        return nums   
+
+
         
 

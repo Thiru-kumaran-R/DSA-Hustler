@@ -43,3 +43,27 @@ By doing this, array become rotated by k places
  
  This question literally feak me out such a silly question but i want to solve this question in my own style means without swaping the values just directly assigning the ith value to 0
  Okk So What i did in this question is again I used the 2 pointer concpet same as above then while iterating the loop first i cheked that if the first element is not equal to 0 then increase the value of j from 0 to 1 then I just cheked that if the value is not equal to 0 then simply swap the value of i and j and after swapping just increase the secong pointer becuase j pointing the non zero value and at that index only I am storing the non zero so after swithing the value with j inex I have to increase it so the next non zero value stored on the next index.
+
+
+ !-- ********************************************************** -->
+
+<!--UNION OF TWO SORTED ARRAY -->
+
+In this question I made a set and added all the elements from both fo the array in that set and at the last storing all the sets element inside the list and return that list
+
+
+
+ !-- ********************************************************** -->
+
+<!-- FIND MISSING NUMBER-->
+
+Hmm that a classic prity simple question in that question what basically i did is i just took the summ of all the elements in the array and by using the Mathematical formula of finding the sum of n natural numbers i Subrated the summ form this mathematical calucalted sum and at the last i got my missing number that's ittt
+
+
+ !-- ********************************************************** -->
+
+<!-- FIND MISSING NUMBER-->
+
+That's also pritty simple question in that what I did is I took the varaible name count which was the temporary varaible store the consecutive 1's count and second varaible was like store the max consecutive ones for I iterate in the loop and checked the condition that if the value=1 then count++ otherwise plase assign the count as zero and store the maxCount 
+
+and at the last i returned the value by max(MaxCount,count) because what about the last edge case the last element is 1 so in that case maxCount will not be updated so at the last we have to chekc which one is greater and return the greater one
