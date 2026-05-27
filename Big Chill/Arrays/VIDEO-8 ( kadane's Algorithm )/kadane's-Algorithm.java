@@ -42,3 +42,15 @@ class Solution {
 }
 
 // Optimal Solution
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int totalSum = 0, maxSum = Integer.MIN_VALUE;
+        int size = nums.length;
+        for(int i = 0; i < size; i++){
+            if(totalSum <= 0) totalSum = 0;
+            totalSum += nums[i];
+            maxSum = Math.max(maxSum, totalSum);
+        }
+        return maxSum;
+    }
+}
