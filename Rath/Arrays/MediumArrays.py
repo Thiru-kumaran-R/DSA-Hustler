@@ -296,4 +296,70 @@ class Solution:
 
 
         
+# PRINT ALL PERMUATIONS
+class Solution {
+
+    public void recPermu(int[] nums,List<Integer> ds, List<List<Integer>> ans, boolean[] freq  ){
+        if(ds.size()==nums.length){
+            ans.add(new ArrayList<>(ds));
+            return ;
+        }
+
+        for(int i=0;i<nums.length;i++){
+            if(!freq[i]){
+                freq[i]=true;
+                ds.add(nums[i]);
+                recPermu(nums,ds,ans,freq);
+                ds.remove(ds.size()-1);
+                freq[i]=false;
+            }
+        }
+    }
+
+
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        List<Integer> ds = new ArrayList<>();
+        boolean[] freq = new boolean[nums.length];
+
+        recPermu(nums,ds,ans,freq);
+        return ans;
+    }
+}
+
+# PYTHON
+
+from typing import List
+
+class Solution:
+    def recPermu(self, nums: List[int], ds: List[int], ans: List[List[int]], freq: List[bool]):
+        if len(ds) == len(nums):
+            ans.append(ds.copy())   
+            return
+
+        for i in range(len(nums)):
+            if not freq[i]:  
+                freq[i] = True
+                ds.append(nums[i]) 
+                
+                self.recPermu(nums, ds, ans, freq)  
+                ds.pop()  
+                freq[i] = False
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        ds = []
+        freq = [False] * len(nums)   
+
+        self.recPermu(nums, ds, ans, freq)
+        return ans
+
+
+# NEXT PERMUTATION->https://leetcode.com/problems/next-permutation/description/
+
+# BRUTE FORCE IS FINDING ALL THE PERMUTATIONS
+
+# OPTIMAL SOLUTION
+
 
