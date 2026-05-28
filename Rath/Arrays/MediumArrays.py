@@ -362,4 +362,52 @@ class Solution:
 
 # OPTIMAL SOLUTION
 
+class Solution {
 
+    public void reverse(int[] nums,int start,int end){
+        while(start<end){
+            int temp=nums[start];
+            nums[start]=nums[end];
+            nums[end]=temp;
+
+            start++;
+            end--;
+        }
+    }
+    public void nextPermutation(int[] nums) {
+        
+        int n=nums.length;
+        int bre=-1;
+        int smallNum=Integer.MAX_VALUE;
+        int swap=-1;
+        for(int i=n-2;i>=0;i--){
+            if(nums[i]<nums[i+1]){
+                bre=i;
+                break;
+            }
+        }
+ 
+        if(bre==-1){
+            reverse(nums,0,n-1);
+            return;
+        }
+
+        for(int i=n-1;i>bre;i--){
+            if(nums[bre]<nums[i]){
+                if(smallNum>nums[i]){
+                    smallNum=nums[i];
+                    swap=i;
+                }
+            }
+        }
+
+        int temp=nums[bre];
+        nums[bre]=nums[swap];
+        nums[swap]=temp;
+
+        reverse(nums,bre+1,n-1);
+    }
+}
+
+
+# 
