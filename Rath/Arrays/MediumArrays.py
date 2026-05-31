@@ -598,3 +598,31 @@ class Solution {
         return list;
     }
 }
+
+# 560->https://leetcode.com/problems/subarray-sum-equals-k/
+
+# COMPLEXITY=O(n) AND SPACE COMPLEXITY=O(n)
+
+
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+
+        hm.put(0,1);
+
+        int sum=0;
+        int count=0;
+
+        for(int num: nums){
+            sum+=num;
+
+            count+=hm.getOrDefault(sum-k,0);
+
+            hm.put(sum,hm.getOrDefault(sum,0)+1);
+
+        }
+
+        return count;
+
+    }
+}
