@@ -1,4 +1,4 @@
-// brute force
+// brute force code
 public class Solution {
     public int subarraySumBrute(int[] nums, int k) {
         int count = 0;
