@@ -282,3 +282,7 @@ class Solution:
             inp = append(inp)
             
         return inp[k-1]
+
+
+# FINDING 3 DIGIT EVEN NUMBER->https://leetcode.com/problems/finding-3-digit-even-numbers/description/?envType=problem-list-v2&envId=recursion
+

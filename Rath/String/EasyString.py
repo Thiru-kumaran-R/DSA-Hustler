@@ -328,6 +328,35 @@ class Solution:
 
         return s[start:end+1]
 
+
+# DETERMINE IF STRING HALVES ARE ALIKE->https://leetcode.com/problems/determine-if-string-halves-are-alike/description/
+# COMPLEXITY=O(N) AND SPACE COMPLEXITY=O(10)
+
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        n=len(s)
+        i=0
+        j=len(s)//2
+        vow_set={'a','e','i','o','u','A','E','I','O','U'}
+        leftCount=0
+        rightCount=0
+
+        while(i<n//2 and j<n):
+
+            if s[i] in vow_set:
+                leftCount+=1
+            if s[j] in vow_set:
+                rightCount+=1
+            
+            i+=1
+            j+=1
+
+        if leftCount==rightCount:
+            return True
+
+        return False
+
+
         
 
         
