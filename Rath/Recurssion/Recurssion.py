@@ -371,7 +371,7 @@ class Solution {
 # ishliye nhi pasand mujhe ye dimaag kharab bkwsss call stackkkkkkkkkkk😑
 
 
-# CONTRCUT STRING FROM BINARY TREE->https://leetcode.com/problems/construct-string-from-binary-tree/description/
+# CONSTRUCT STRING FROM BINARY TREE->https://leetcode.com/problems/construct-string-from-binary-tree/description/
 # COMPLEXITY=O(n)
 
 
@@ -393,6 +393,35 @@ class Solution:
 
         return res+"("+left+")"+"("+right+")"
 
+
+# JOSEPH PROBLEM OR FIND THE WINNER OF THE CIRCULAR GAME->https://leetcode.com/problems/find-the-winner-of-the-circular-game/
+
+# COMPLEXITY=O(n^2)
+# BRUTE FORCE
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+
+ 
+        if n==1:
+            return 1
+
+        store=list(range(1,n+1))
+
+         
+        i=0
+
+        while len(store)>1:
+            i=(i+k-1)%len(store)
+
+            store.pop(i)
+
+            # i=idx+1
+
+        return store[0]
+
+
+
+        
 
 # JOSEPH PROBLEM OR FIND THE WINNER OF THE CIRCULAR GAME->https://leetcode.com/problems/find-the-winner-of-the-circular-game/
 
@@ -517,3 +546,41 @@ class Solution:
 
 
 
+
+
+         
+
+         
+
+        
+# DIFFERENT WAYS TO ADD PARENTHESIS->https://leetcode.com/problems/different-ways-to-add-parentheses/
+# COMPLEXITY=O(NX2^n)
+
+class Solution:
+    def solve(self,s:str)-> List[int]:
+        res=[]
+
+        for i in range(len(s)):
+            if s[i]=="+" or s[i]=="-" or s[i]=="*":
+                left=self.solve(s[0:i])
+                right=self.solve(s[i+1:])
+
+                for l in left:
+                    for r in right:
+                        if s[i]=="+":
+                            res.append(l+r)
+                        if s[i]=="*":
+                            res.append(l*r)
+                        if s[i]=="-":
+                            res.append(l-r)
+
+        if not res:
+            res.append(int(s))
+        return res
+
+
+
+    def diffWaysToCompute(self, expression: str) -> List[int]:
+        return self.solve(expression)
+        
+        
