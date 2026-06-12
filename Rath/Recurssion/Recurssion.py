@@ -1,3 +1,51 @@
+# RECURSION LEAP OF FAITH (SOME SORT OF EASY QUESTION WHICH BUILD BASIC)
+
+# RECRUSION LEAP OF FATIH
+# 1- FACTORIAL
+
+class Solution:
+
+    def fact(n:int)->int:
+        if n<=1:
+            return 1
+
+        return n*fact(n-1)
+
+
+    def factorail(self, n: int) -> int:
+
+        self.solve(n)
+
+
+        
+# reverse a string 
+class Solution:
+
+    def solve(self,s:str,idx:int)->str:
+
+            if idx>=len(s):
+                return ""
+            
+            res=solve(s,idx+1,res)
+            
+         
+         return res+s[idx]
+         
+
+
+    def stringReverse(self, strr: str) -> str:
+        
+
+         i=0
+         self.solve(strr,i)
+
+         return s
+
+
+        
+
+
+
 # //POWER X(N)->https://leetcode.com/problems/powx-n/description/
 
 class Solution:
@@ -583,4 +631,33 @@ class Solution:
     def diffWaysToCompute(self, expression: str) -> List[int]:
         return self.solve(expression)
         
+        # LEXOGRAPHICAL NUMBERS->https://leetcode.com/problems/lexicographical-numbers/description/
+        # COMPLEXITY=O(n)  AND SPACE COMPLEXITY=O(Log(n))
+
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+
+        result=[]
+
+        for currNum in range(1,10):
+            self.solve(currNum,n,result)
+
+        return result
+
+    
+    def solve(self,currNum:int,n:int,res:List[int]):
+        if currNum>n:
+            return
+
+        res.append(currNum)
         
+
+        for append in range(10):
+            newNum=currNum*10 +append
+            if newNum>n: return
+            self.solve(newNum,n,res)
+
+               
+
+ 
+
