@@ -1,3 +1,51 @@
+# RECURSION LEAP OF FAITH (SOME SORT OF EASY QUESTION WHICH BUILD BASIC)
+
+# RECRUSION LEAP OF FATIH
+# 1- FACTORIAL
+
+class Solution:
+
+    def fact(n:int)->int:
+        if n<=1:
+            return 1
+
+        return n*fact(n-1)
+
+
+    def factorail(self, n: int) -> int:
+
+        self.solve(n)
+
+
+        
+# reverse a string 
+class Solution:
+
+    def solve(self,s:str,idx:int)->str:
+
+            if idx>=len(s):
+                return ""
+            
+            res=solve(s,idx+1,res)
+            
+         
+         return res+s[idx]
+         
+
+
+    def stringReverse(self, strr: str) -> str:
+        
+
+         i=0
+         self.solve(strr,i)
+
+         return s
+
+
+        
+
+
+
 # //POWER X(N)->https://leetcode.com/problems/powx-n/description/
 
 class Solution:
@@ -371,7 +419,7 @@ class Solution {
 # ishliye nhi pasand mujhe ye dimaag kharab bkwsss call stackkkkkkkkkkk😑
 
 
-# CONTRCUT STRING FROM BINARY TREE->https://leetcode.com/problems/construct-string-from-binary-tree/description/
+# CONSTRUCT STRING FROM BINARY TREE->https://leetcode.com/problems/construct-string-from-binary-tree/description/
 # COMPLEXITY=O(n)
 
 
@@ -392,4 +440,224 @@ class Solution:
             return res+"("+left+")"
 
         return res+"("+left+")"+"("+right+")"
+
+
+# JOSEPH PROBLEM OR FIND THE WINNER OF THE CIRCULAR GAME->https://leetcode.com/problems/find-the-winner-of-the-circular-game/
+
+# COMPLEXITY=O(n^2)
+# BRUTE FORCE
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+
+ 
+        if n==1:
+            return 1
+
+        store=list(range(1,n+1))
+
+         
+        i=0
+
+        while len(store)>1:
+            i=(i+k-1)%len(store)
+
+            store.pop(i)
+
+            # i=idx+1
+
+        return store[0]
+
+
+
         
+
+# JOSEPH PROBLEM OR FIND THE WINNER OF THE CIRCULAR GAME->https://leetcode.com/problems/find-the-winner-of-the-circular-game/
+
+# COMPLEXITY=O(n^2)
+# BRUTE FORCE
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+
+ 
+        if n==1:
+            return 1
+
+        store=list(range(1,n+1))
+
+         
+        i=0
+
+        while len(store)>1:
+            i=(i+k-1)%len(store)
+
+            store.pop(i)
+
+            # i=idx+1
+
+        return store[0]
+
+
+
+        
+# BETTER APPRAOCH COMPLEXITY=O(nXk)
+
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+
+        queue=deque()
+
+        for i in range(1,n+1):
+            queue.append(i)
+
+        
+        while len(queue)>1:
+
+            for i in range(k-1):
+                queue.append(queue.popleft())
+
+            queue.popleft()
+        
+        return queue.popleft()
+
+
+# OPTIMAL APPRAOCH  jo ki mujhe theek se samj nhi ayii bkwss recursion
+# COMPLEXITY=O(n) something uske baad
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+
+        queue=deque()
+
+        for i in range(1,n+1):
+            queue.append(i)
+
+        
+        while len(queue)>1:
+
+            for i in range(k-1):
+                queue.append(queue.popleft())
+
+            queue.popleft()
+        
+        return queue.popleft()
+
+
+
+
+
+# INTEGER TO ENGLISH WORDS->https://leetcode.com/problems/integer-to-english-words/description/
+# COMPLEXITY=O(log(n))
+
+class Solution:
+
+
+    def solve(self,num:int)->str:
+        belowTen={0: "", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 
+        6: "Six", 7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
+
+        belowTwenty={11: "Eleven", 12: "Twelve", 13: "Thirteen", 14: "Fourteen", 
+        15: "Fifteen", 16: "Sixteen", 17: "Seventeen", 18: "Eighteen", 19: "Nineteen"}
+
+        tens = {
+        2: "Twenty", 3: "Thirty", 4: "Forty", 5: "Fifty", 
+        6: "Sixty", 7: "Seventy", 8: "Eighty", 9: "Ninety"}
+
+        if num<=10:
+            return belowTen[num]
+
+        if num<20:
+            return belowTwenty[num]
+        
+        if num<100:
+            return tens[num//10]+(" "+self.solve(num%10) if num%10!=0 else "")
+
+        if num<1000:
+            return self.solve(num//100)+" Hundred"+(" "+self.solve(num%100) if num%100!=0 else "")
+
+        if num<1000000:
+            return self.solve(num//1000)+" Thousand"+(" "+self.solve(num%1000) if num%1000!=0 else "")
+
+        if num<1000000000:
+            return self.solve(num//1000000)+" Million"+(" "+self.solve(num%1000000) if num%1000000!=0 else "")
+
+        return self.solve(num//1000000000)+" Billion"+(" "+self.solve(num%1000000000) if num%1000000000!=0 else "")
+
+
+
+
+    def numberToWords(self, num: int) -> str:
+
+        if num==0:
+            return "Zero"
+
+         
+        return self.solve(num)
+
+
+
+
+
+         
+
+         
+
+        
+# DIFFERENT WAYS TO ADD PARENTHESIS->https://leetcode.com/problems/different-ways-to-add-parentheses/
+# COMPLEXITY=O(NX2^n)
+
+class Solution:
+    def solve(self,s:str)-> List[int]:
+        res=[]
+
+        for i in range(len(s)):
+            if s[i]=="+" or s[i]=="-" or s[i]=="*":
+                left=self.solve(s[0:i])
+                right=self.solve(s[i+1:])
+
+                for l in left:
+                    for r in right:
+                        if s[i]=="+":
+                            res.append(l+r)
+                        if s[i]=="*":
+                            res.append(l*r)
+                        if s[i]=="-":
+                            res.append(l-r)
+
+        if not res:
+            res.append(int(s))
+        return res
+
+
+
+    def diffWaysToCompute(self, expression: str) -> List[int]:
+        return self.solve(expression)
+        
+        # LEXOGRAPHICAL NUMBERS->https://leetcode.com/problems/lexicographical-numbers/description/
+        # COMPLEXITY=O(n)  AND SPACE COMPLEXITY=O(Log(n))
+
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+
+        result=[]
+
+        for currNum in range(1,10):
+            self.solve(currNum,n,result)
+
+        return result
+
+    
+    def solve(self,currNum:int,n:int,res:List[int]):
+        if currNum>n:
+            return
+
+        res.append(currNum)
+        
+
+        for append in range(10):
+            newNum=currNum*10 +append
+            if newNum>n: return
+            self.solve(newNum,n,res)
+
+               
+
+ 
+
