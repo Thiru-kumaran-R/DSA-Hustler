@@ -100,35 +100,102 @@ class Solution {
 // MERGE SORT
  
 class Solution:
-    def mergeSort(self, arr: List[int]) -> None:
-         if len(arr) <= 1:
-            return
-
-         mid = len(arr) // 2
+ 
+    def mergeSort(self, arr, l, r):
+        #code here
         
-         left_half = arr[:mid]
-        right_half = arr[mid:]
-
-         self.mergeSort(left_half)
-        self.mergeSort(right_half)
-
-         i = j = k = 0
-
-         while i < len(left_half) and j < len(right_half):
-            if left_half[i] < right_half[j]:
-                arr[k] = left_half[i]
-                i += 1
+        if l>=r:
+            return
+        
+        mid=(r+l)//2
+        
+        self.mergeSort(arr,l,mid)
+        self.mergeSort(arr,mid+1,r)
+        
+        
+        self.merge(arr,l,mid,r)
+        
+        
+        
+    def merge(self,arr,l,mid,r):
+        left=arr[l : mid + 1]
+        right=arr[mid + 1 : r + 1]
+        n1=mid-l+1
+        n2=r-mid
+        
+        k=l
+        
+        for i in range(n1):
+            left[i]=arr[k]
+            k+=1
+            
+        # fill R
+        for i in range(n2):
+            right[i]=arr[k]
+            k+=1
+            
+        i=0
+        j=0
+        k=l
+        
+        # MERGE THEM IN ARR
+        while i<n1 and j<n2:
+            if left[i]<right[j]:
+                arr[k]=left[i]
+                
+                i+=1
+            
             else:
-                arr[k] = right_half[j]
-                j += 1
-            k += 1
+                arr[k]=right[j]
+                j+=1
+                
+            k+=1
+            
+            
+        
+        while i<n1:
+            arr[k]=left[i]
+            k+=1
+            i+=1
+            
+        
+        while j<n2:
+            arr[k]=right[j]
+            k+=1
+            j+=1
+                
+            
+        return
+        
 
-         while i < len(left_half):
-            arr[k] = left_half[i]
-            i += 1
-            k += 1
+// QUICK SORT->https://www.geeksforgeeks.org/problems/quick-sort/1
+// COMPLEXITY=O(nlog(n)) and in worst case=O(n^2) if its sorted and reverse
 
-         while j < len(right_half):
-            arr[k] = right_half[j]
-            j += 1
-            k += 1
+class Solution:
+    def quickSort(self, arr, low, high):
+        #code here 
+        if low>=high:
+            return 
+        
+        pIndex= self.partition(arr,low,high)
+        
+        self.quickSort(arr,low,pIndex-1)
+        self.quickSort(arr,pIndex+1,high)
+        
+
+    def partition(self, arr, low, high):
+        
+        pivot=high
+        pidex=low
+        
+        while low<high:
+            if arr[low]<arr[pivot]:
+                arr[pidex],arr[low]=arr[low],arr[pidex]
+                pidex+=1
+            
+            low+=1     
+                
+        arr[pidex],arr[pivot]=arr[pivot],arr[pidex]
+        
+        return pidex
+    
