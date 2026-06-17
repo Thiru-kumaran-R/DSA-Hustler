@@ -17,6 +17,7 @@ class Solution {
     }
 }
 
+
 // Optimal Solution
 class Solution {
     public int maxProduct(int[] nums) {
