@@ -119,4 +119,45 @@ class Solution:
 
         return maxGain
 
+
+# MAXIMUM BIULDING HEIGHT->https://leetcode.com/problems/maximum-building-height/description/?envType=daily-question&envId=2026-06-20
+# COMPLEXITY=O(n)   
+
+class Solution:
+    def maxBuilding(self, n: int, res: List[List[int]]) -> int:
+        res.append([1,0])
+        res.append([n,n-1])
+        res.sort()
+        ans=0
+
+        # LEFT TO RIGHT PASS
+        for i in range(1,len(res)):
+            res[i][1]=min(res[i][1],res[i-1][1]+res[i][0] - res[i-1][0])
+
+#        RIGHT TO LEFT PASS
+        for i in range(len(res)-2,-1,-1):
+            res[i][1]=min(res[i][1],res[i+1][1]+res[i+1][0] - res[i][0])
+
+#       THE PEAK BETWEEN 2 RESTRCITED BUILDING
+        for i in range(1,len(res)):
+            idx1=res[i-1][0]
+            h1=res[i-1][1]
+
+            idx2=res[i][0]
+            h2=res[i][1]
+
+            gap=idx2-idx1
+
+            ans=max(ans,(gap+h2+h1)//2)
+
+
+        return ans
+
+
+
+        
+
+        
+
+
         
