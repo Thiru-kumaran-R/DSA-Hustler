@@ -155,6 +155,49 @@ class Solution:
 
 
 
+# MAXIMUM ICE CREAM BARS->https://leetcode.com/problems/maximum-ice-cream-bars/?envType=daily-question&envId=2026-06-21
+COMPLEXITY=O(n+K) whre k is the maximum number
+
+
+class Solution:
+    def maxIceCream(self, costs: List[int], coins: int) -> int:
+
+        if len(costs)==1 and costs[0]>coins:
+            return 0
+        elif len(costs)==1 and costs[0]<=coins:
+            return 1
+
+        
+        max_value=max(costs)
+        count=[0]*(max_value+1)
+        val=0
+
+        for i in range(len(costs)):
+            count[costs[i]]+=1
+
+        for i in range(len(count)):
+            if count[i]>0:
+                if i>coins:
+                    return val
+                else:
+                    while(count[i]>0):
+                        if coins>=i:
+                            val+=1
+                            coins-=i
+                            count[i]-=1
+                        else:
+                            break
+                    
+                         
+                        
+        return val
+
+
+        
+
+
+
+        
         
 
         
