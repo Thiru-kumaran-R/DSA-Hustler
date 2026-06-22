@@ -156,7 +156,7 @@ class Solution:
 
 
 # MAXIMUM ICE CREAM BARS->https://leetcode.com/problems/maximum-ice-cream-bars/?envType=daily-question&envId=2026-06-21
-COMPLEXITY=O(n+K) whre k is the maximum number
+# COMPLEXITY=O(n+K) whre k is the maximum number
 
 
 class Solution:
@@ -186,18 +186,49 @@ class Solution:
                             coins-=i
                             count[i]-=1
                         else:
-                            break
-                    
-                         
-                        
+                            break                
         return val
 
 
+
+# MAXIMUM NUMBER OF BALLOONS->https://leetcode.com/problems/maximum-number-of-balloons/description/?envType=daily-question&envId=2026-06-22
+# COMPLEXITY=O(n) AND SPACE COMPLEXITY=O(1)
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        if text=="balloon":
+            return 1
+        if len(text)<7:
+            return 0
+
+        count={'b':0,'a':0,'l':0,'o':0,'n':0}
+
+        for i in range(len(text)):
+            if text[i]=='b':
+                count['b']+=1
+            elif text[i]=='a':
+                count['a']+=1
+            elif text[i]=='l':
+                count['l']+=1
+            elif text[i]=='o':
+                count['o']+=1
+            elif text[i]=='n':
+                count['n']+=1
+
+        count['l']=count['l']//2
+        count['o']=count['o']//2
+        # minn=float('inf')
+        # for value in count.values():
+        #     if value==0:
+        #         return 0
+
+        #     minn=min(minn,value)
+
+        return min(count.values())
+
+
         
 
-
-
-        
         
 
         

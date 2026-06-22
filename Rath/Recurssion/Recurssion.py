@@ -719,5 +719,9 @@ class Solution:
         
       
 
+# FLATTEN BST TO SORTED LIST
+
+ node*head=flattenBST(root-left)
+ root->left=null
  
 
