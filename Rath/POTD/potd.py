@@ -227,6 +227,42 @@ class Solution:
         return min(count.values())
 
 
+# 
+# BRUTE FORCE
+from functools import cache
+
+class Solution:
+    def zigZagArrays(self, n: int, l: int, r: int) -> int:
+        mod = 10**9 + 7
+        res = 0
+        
+        @cache
+        def zigzag(i: int, prev: int, went_up: bool):
+            if i == n:
+                return 1
+
+            total = 0
+
+            if went_up:
+                # GO DOWN
+                for val in range(l, prev):
+                    total = (total + zigzag(i + 1, val, False)) % mod
+            else:
+                # GO UP
+                for val in range(prev + 1, r + 1):
+                    total = (total + zigzag(i + 1, val, True)) % mod
+
+            return total%mod
+
+        # Main logic loop for first two numbers
+        for first in range(l, r + 1):
+            for second in range(l, r + 1):
+                if second > first:
+                    res = (res + zigzag(2, second, True)) % mod
+                elif first > second:
+                    res = (res + zigzag(2, second, False)) % mod
+
+        return res % mod
         
 
         
