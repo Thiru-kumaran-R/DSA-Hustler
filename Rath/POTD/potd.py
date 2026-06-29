@@ -364,4 +364,42 @@ class Solution:
 
         return res
 
+# NUMBER OF STRINGS THAT APPEAR AS SUBSTRING IN WORD->https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/?envType=daily-question&envId=2026-06-29
+# COMPLEXITY=O(n)
+
+class Solution:
+    def numOfStrings(self, patterns: List[str], word: str) -> int:
+
+        res=0
+
+        for i in range(len(patterns)):
+            if len(patterns[i])<=len(word) and patterns[i] in word:
+                res+=1
+
+
+        return res   
+
+# MAXIMUM ELEMENT AFTER DECREASING AND REARRANGING->https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/description/?envType=daily-question&envId=2026-06-28
+# COMPLEXITY=O(nlog(n))
+
+class Solution:
+    def maximumElementAfterDecrementingAndRearranging(self, arr: List[int]) -> int:
+        if len(arr)==1:
+            return 1
+
+        arr.sort()
+        maxEl=0
+
+        if arr[0]!=1:
+            arr[0]=1
         
+        for i in range(1,len(arr)):
+            if abs(arr[i] - arr[i - 1]) <= 1:
+                maxEl=max(maxEl,arr[i],arr[i-1])
+            else:
+                arr[i]=arr[i-1]+1
+                maxEl=max(maxEl,arr[i])
+
+        return maxEl
+
+
