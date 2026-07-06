@@ -469,9 +469,63 @@ class Solution:
 
          
 
+ 
+
+# ADD TWO NUMBERS ->https://leetcode.com/problems/add-two-numbers/description/
+# COMPLEXITY=O(n)
+
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+         firstHead = l1
+        secondHead = l2
+        
+        carry = 0
+        newL = ListNode(-1)
+        curr = newL
+
+         while firstHead is not None and secondHead is not None:
+            v = firstHead.val + secondHead.val + carry
+            if v >= 10:
+                curr.next = ListNode(v % 10)
+                carry = 1
+            else:
+                curr.next = ListNode(v)
+                carry = 0
+            curr = curr.next
+            firstHead = firstHead.next
+            secondHead = secondHead.next
+
+         while firstHead is not None:
+            v = carry + firstHead.val
+            if v >= 10:
+                curr.next = ListNode(0)  
+                                  
+            else:
+                curr.next = ListNode(v)
+                carry = 0
+            curr = curr.next
+            firstHead = firstHead.next
+
+         while secondHead is not None:
+            v = carry + secondHead.val
+            if v >= 10:
+                curr.next = ListNode(0) 
+                                   
+            else:
+                curr.next = ListNode(v)
+                carry=0
+            curr = curr.next
+            secondHead = secondHead.next
+
+         if carry == 1:
+            curr.next = ListNode(1)
+            curr = curr.next
+
+        curr.next = None
+        return newL.next
 
 
-
+# ish ticchu question ne jo mere dimmag ka dhi kiya hai faaltu kaa mtlb bss whi meme yaad aa rha hia-> beta tumshe na ho payega
         
 
     
