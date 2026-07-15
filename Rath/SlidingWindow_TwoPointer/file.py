@@ -218,3 +218,70 @@ class Solution:
             right+=1
 
         return count
+
+# NUMBER OF SUBSTRING CONTAINING ALL THREE CHARACTER->https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+# COMPLEXITY=O(2n)
+
+
+        class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+
+        map={'a':0,'b':0,'c':0}
+        left=0
+        right=0
+        res=0
+        count=0
+
+        while right<len(s):
+            map[s[right]]+=1
+
+            while map['a']>0 and map['b']>0 and map['c']>0:
+                count+=1
+                map[s[left]]-=1
+                left+=1
+
+            res+=count
+            right+=1
+
+        return res
+
+
+# maximum points u can attain from cards->https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+# COMPLEXITY=0(2k)
+
+class Solution:
+    def maxScore(self, nums: List[int], k: int) -> int:
+
+        if len(nums)==k:
+            return sum(nums)
+
+        
+        left=0
+        summ=0
+        res=0
+        right=len(nums)-1
+
+        while left<k:
+            summ+=nums[left]
+            left+=1
+        print(left)
+        
+        res=summ
+        rightval=0
+        left -= 1
+
+        while left>=0:
+            rightval+=nums[right]
+            summ-=nums[left]
+ 
+            res=max(res,rightval+summ)
+            right-=1
+            left-=1
+
+        return res
+
+
+
+        
+            
+        

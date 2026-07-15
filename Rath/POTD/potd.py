@@ -438,4 +438,34 @@ class Solution:
 
 
 
+# THE SMALLEST LINE OF CODE I EVER WRITTEN :
+# GCD OF ODD AND EVEN SUM->https://leetcode.com/problems/gcd-of-odd-and-even-sums/description/?envType=daily-question&envId=2026-07-15
+# COMPLEXITY=O(1)
+class Solution:
+    def gcdOfOddEvenSums(self, n: int) -> int:
+
+        # if n==1:
+        #     return 1
+
+        # sumOdd=1
+        # sumEven=0
+
+
+        # for i in range(n+1):
+        #     sumOdd+=(i*2)-1
+        #     sumEven+=i*2
         
+     
+        
+        # for i in range(sumOdd,-1,-1):
+        #     if sumOdd%i==0 and sumEven%i==0:
+        #         return i
+
+        # return 1
+
+        return n
+
+
+
+        
+
