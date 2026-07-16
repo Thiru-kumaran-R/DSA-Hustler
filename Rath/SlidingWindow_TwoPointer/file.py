@@ -281,7 +281,39 @@ class Solution:
         return res
 
 
+#SUM OF GCD OF FORMED PARIES
+# COMEPLXITY=O(n)
+
+class Solution:
+    def gcdSum(self, nums: list[int]) -> int:
+
+        maxVal=0
+        l=[]
+     
+     #creating the list
+        for i in range(len(nums)):
+            maxVal=max(maxVal,nums[i])
+            l.append(math.gcd(maxVal,nums[i]))
 
         
+        #sorting the list
+        l.sort()
+
+        left=0
+        right=len(l)-1
+        res=0
+     
+     # find the sum
+        while left<len(l)//2:
+            res+=math.gcd(l[left],l[right])
+            left+=1
+            right-=1
+
+
+        return res
+
+
+        
+          
             
         
