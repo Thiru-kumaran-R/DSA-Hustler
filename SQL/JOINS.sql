@@ -93,3 +93,51 @@ order by visit_date
  
  from user_transactions 
   order by product_id,year
+
+
+
+-- Marketing Touch Streak->https://datalemur.com/questions/marketing-touch-streak
+-- VERY VERY NICE AND COMPLICATED ALSO
+ DATE_TRUNC('week', event_date))
+
+
+WITH consecutive_events_cte AS (
+  SELECT
+    event_id,
+    contact_id, 
+    event_type, 
+    DATE_TRUNC('week', event_date) AS current_week,
+    LAG(DATE_TRUNC('week', event_date)) OVER (
+      PARTITION BY contact_id 
+      ORDER BY DATE_TRUNC('week', event_date)) AS lag_week,
+    LEAD(DATE_TRUNC('week', event_date)) OVER (
+      PARTITION BY contact_id 
+      ORDER BY DATE_TRUNC('week', event_date)) AS lead_week
+FROM marketing_touches)
+
+SELECT DISTINCT contacts.email
+FROM consecutive_events_cte AS events
+INNER JOIN crm_contacts AS contacts
+  ON events.contact_id = contacts.contact_id
+WHERE events.lag_week = events.current_week - INTERVAL '1 week'
+  OR events.lead_week = events.current_week + INTERVAL '1 week'
+  AND events.contact_id IN (
+    SELECT contact_id 
+    FROM marketing_touches 
+    WHERE event_type = 'trial_request'
+  );
+
+
+
+-- RESTRAURANT GROWTH->https://leetcode.com/problems/restaurant-growth/description/
+
+
+select distinct visited_on,
+        sum(amount) over w as amount,
+        round((sum(amount) over w)/7, 2) as average_amount
+    from customer
+    WINDOW w AS ( 
+            order by visited_on
+            range between interval 6 day PRECEDING and current row
+    )
+    Limit 6, 999
